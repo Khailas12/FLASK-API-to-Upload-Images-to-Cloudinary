@@ -4,12 +4,12 @@ import cloudinary.uploader
 import cloudinary.api
 import logging
 from cloudinary.utils import cloudinary_url
-import os
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
+import os
 
 
-load_dotenv()
+load_dotenv()   # Loading API keys etc...
 app = Flask(__name__)
 CORS(app)
 
@@ -51,7 +51,8 @@ def cld_optimize():
         app.logger.info("%s public id", public_id)
         if public_id:
             cloud_url = cloudinary_url(public_id, fetch_format="auto", quality="auto", secure=True)
-            app.logger.info(cloud_url)
+            upl = app.logger.info(cloud_url)
+
             return jsonify(cloud_url)
 
 
